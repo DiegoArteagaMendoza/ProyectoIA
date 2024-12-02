@@ -64,7 +64,7 @@ cm = confusion_matrix(y_test, y_pred)
 
 # Mostrar la matriz de confusión con etiquetas
 disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=label_names)
-disp.plot()
+disp.plot(cmap="Reds")
 
 # Mostrar el gráfico
 plt.title("Matriz de Confusión - Random Forest")
