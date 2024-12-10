@@ -14,7 +14,6 @@ import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, accuracy_score, classification_report
-# Nuevo: Usamos learning_curve para optimizar
 from sklearn.model_selection import learning_curve
 import matplotlib.pyplot as plt
 
@@ -77,8 +76,6 @@ X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.4, random_state=42)
 
 # Crear y entrenar el modelo Random Forest
-# Antes: rf = RandomForestClassifier(n_estimators=500, max_depth=20, random_state=42)
-# Cambios: Reducimos n_estimators a 100 y añadimos n_jobs=-1
 rf = RandomForestClassifier(
     n_estimators=100, max_depth=20, n_jobs=-1, random_state=42)
 rf.fit(X_train, y_train)
@@ -106,7 +103,6 @@ plt.title("Matriz de Confusión - Random Forest")
 plt.show()
 
 # Gráfica de la curva de aprendizaje usando `learning_curve`
-# Antes: Hacíamos un bucle manual para calcular la curva
 train_sizes, train_scores, test_scores = learning_curve(
     RandomForestClassifier(n_estimators=100, max_depth=20,
                            n_jobs=-1, random_state=42),  # Modelo con optimización
